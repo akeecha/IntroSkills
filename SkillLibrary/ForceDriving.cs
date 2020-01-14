@@ -107,6 +107,8 @@ namespace SkillLibrary
 
 				_misty.ChangeLED(255, 255, 255, null);
 				_misty.DisplayImage("e_ContentRight.jpg", 1, null);
+				_misty.StartFaceRecognition(null);
+				_misty.StartKeyPhraseRecognition(null);
 
 				RegisterEvents();
 
@@ -211,8 +213,10 @@ namespace SkillLibrary
 		{
 			// Stop Driving
 			_misty.Stop(null);
+
 			// Stop KeyPhrase recognition
-			//_misty.StopKeyPhraseRecognition(null);
+			_misty.StopKeyPhraseRecognition(null);
+
 			// Stop Face Recognition
 			_misty.StopFaceRecognition(null);
 		}
@@ -249,11 +253,10 @@ namespace SkillLibrary
 
 			// Face Recognition
 			_misty.RegisterFaceRecognitionEvent(FaceRecCallback, 0, true, null, null, null);
-			_misty.StartFaceRecognition(null);
-
+			
 			// Key Phase
-			//_misty.RegisterKeyPhraseRecognizedEvent(KeyPhraseRecognizedCallback, 250, true, null, null);
-			//_misty.StartKeyPhraseRecognition(null);
+			_misty.RegisterKeyPhraseRecognizedEvent(KeyPhraseRecognizedCallback, 250, true, null, null);
+			
 
 			//TOF
 			List<TimeOfFlightValidation> tofFrontRightValidations = new List<TimeOfFlightValidation>();
