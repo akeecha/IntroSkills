@@ -116,7 +116,7 @@ namespace SkillLibrary
 			}
 			catch (Exception ex)
 			{
-				_misty.SkillLogger.Log($"BackAndForthSkill : OnStart: => Exception", ex);
+				_misty.SkillLogger.Log($"ForceDriving : OnStart: => Exception", ex);
 			}
 		}
 
@@ -126,7 +126,7 @@ namespace SkillLibrary
 		/// <param name="parameters"></param>
 		public void OnCancel(object sender, IDictionary<string, object> parameters)
 		{
-			_misty.SkillLogger.LogVerbose($"BackAndForthSkill : OnCancel called");
+			_misty.SkillLogger.LogVerbose($"ForceDriving : OnCancel called");
 			DoCleanup();
 			_misty.ChangeLED(255, 0, 0, null);
 		}
@@ -136,7 +136,7 @@ namespace SkillLibrary
 		/// </summary>
 		public void OnTimeout(object sender, IDictionary<string, object> parameters)
 		{
-			_misty.SkillLogger.LogVerbose($"BackAndForthSkill : OnTimeout called");
+			_misty.SkillLogger.LogVerbose($"ForceDriving : OnTimeout called");
 			DoCleanup();
 			_misty.ChangeLED(0, 0, 255, null);
 		}
@@ -148,7 +148,7 @@ namespace SkillLibrary
 		public void OnPause(object sender, IDictionary<string, object> parameters)
 		{
 			//In this example, Pause is not implemented by default and that command is ignored
-			_misty.SkillLogger.LogVerbose($"BackAndForthSkill : OnPause called");
+			_misty.SkillLogger.LogVerbose($"ForceDriving : OnPause called");
 		}
 
 		/// <summary>
@@ -158,7 +158,7 @@ namespace SkillLibrary
 		public void OnResume(object sender, IDictionary<string, object> parameters)
 		{
 			//In this example, Resume is not implemented by default and that command is ignored
-			_misty.SkillLogger.LogVerbose($"BackAndForthSkill : OnResume called");
+			_misty.SkillLogger.LogVerbose($"ForceDriving : OnResume called");
 		}
 
 		/// <summary>
@@ -242,6 +242,15 @@ namespace SkillLibrary
 			//Cap touch
 			_misty.RegisterCapTouchEvent(CapTouchCallback, 0, true, null, null, null);
 
+			// Face Recognition
+			_misty.StartFaceRecognition(null);
+			_misty.RegisterFaceRecognitionEvent(FaceRecCallback, 0, false, null, null, null);
+
+
+			// Key Phase
+			_misty.RegisterKeyPhraseRecognizedEvent(KeyPhraseRecognizedCallback, 250, true, null, null);
+			_misty.StartKeyPhraseRecognition(null);
+
 			//TOF
 			List<TimeOfFlightValidation> tofFrontRightValidations = new List<TimeOfFlightValidation>();
 			tofFrontRightValidations.Add(new TimeOfFlightValidation { Name = TimeOfFlightFilter.DistanceInMeters, Comparison = ComparisonOperator.LessThanOrEqual, ComparisonValue = 0.3 });
@@ -280,7 +289,7 @@ namespace SkillLibrary
 				return;
 			}
 
-			_misty.SkillLogger.Log($"BackAndForthSkill : BumpCallback: => {bumpEvent.IsContacted}");
+			_misty.SkillLogger.Log($"ForceDriving : BumpCallback: => {bumpEvent.IsContacted}");
 			_misty.Stop(null);
 
 			switch(bumpEvent.SensorPosition)
@@ -306,7 +315,7 @@ namespace SkillLibrary
 		/// <param name="tofEvent"></param>
 		private void TOFRangeCallback(ITimeOfFlightEvent tofEvent)
 		{
-			_misty.SkillLogger.Log($"{(tofEvent.Status != 0 ? "WARNING!! " : "")}BackAndForthSkill : TOFRangeCallback {tofEvent.SensorPosition.ToString()} - Status:{tofEvent.Status} - Meters:{tofEvent.DistanceInMeters}");
+			_misty.SkillLogger.Log($"{(tofEvent.Status != 0 ? "WARNING!! " : "")}ForceDriving : TOFRangeCallback {tofEvent.SensorPosition.ToString()} - Status:{tofEvent.Status} - Meters:{tofEvent.DistanceInMeters}");
 			
 			switch (tofEvent.SensorPosition)
 			{
@@ -371,8 +380,8 @@ namespace SkillLibrary
 						_misty.DisplayImage("e_Amazement.jpg", 1, null);
 						break;
 					case CapTouchPosition.Right:
-						_misty.PlayAudio("Joy.wav", 100, null);
-						_misty.DisplayImage("JoyGoofy3.jpg", 1, null);
+						_misty.PlayAudio("s_Joy.wav", 100, null);
+						_misty.DisplayImage("e_JoyGoofy3.jpg", 1, null);
 						break;
 					case CapTouchPosition.Left:
 						_misty.PlayAudio("e_Terror.jpg", 100, null);
@@ -419,7 +428,7 @@ namespace SkillLibrary
 			else
 			{
 				_misty.DisplayImage("e_EcstacyStarryEyed.jpg", 1, null);
-				_misty.PlayAudio("sEcstacy.wav", 100, null);
+				_misty.PlayAudio("s_Ecstacy.wav", 100, null);
 			}
 			
 			if(!_misty.Wait(5000)) { return; }
