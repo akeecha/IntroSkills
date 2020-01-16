@@ -243,13 +243,12 @@ namespace SkillLibrary
 			_misty.RegisterCapTouchEvent(CapTouchCallback, 0, true, null, null, null);
 
 			// Face Recognition
-			_misty.StartFaceRecognition(null);
 			_misty.RegisterFaceRecognitionEvent(FaceRecCallback, 0, false, null, null, null);
-
+			//_misty.StartFaceRecognition(null);
 
 			// Key Phase
 			_misty.RegisterKeyPhraseRecognizedEvent(KeyPhraseRecognizedCallback, 250, true, null, null);
-			_misty.StartKeyPhraseRecognition(null);
+			//_misty.StartKeyPhraseRecognition(null);
 
 			//TOF
 			List<TimeOfFlightValidation> tofFrontRightValidations = new List<TimeOfFlightValidation>();
