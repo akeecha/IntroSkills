@@ -114,7 +114,7 @@ namespace SkillLibrary
 				_misty.ChangeLED(255, 255, 255, null);
 				_misty.DisplayImage("e_ContentRight.jpg", 1, null);
 
-				_misty.StartKeyPhraseRecognition(null);
+				_misty.StartKeyPhraseRecognition(false, false, 0, 0, null);
 				_misty.StartFaceRecognition(null);
 				RegisterEvents();
 
@@ -446,13 +446,13 @@ namespace SkillLibrary
 			_misty.PlayAudio("s_Awe.wav", 100, null);
 
 			if(!_misty.Wait(3000)) { return; }
-			_misty.StartKeyPhraseRecognition(null);
+			_misty.StartKeyPhraseRecognition(false, false, 0, 0, null);
 		}
 
 		/// <summary>
 		/// Callback called when a face is detected or recognized
 		/// </summary>
-		/// <param name="faceRecEvent"></param>
+		/// <param name="faceRecEvent"></paramfalse, false, 0, 0,
 		private void FaceRecCallback(IFaceRecognitionEvent faceRecEvent)
 		{
 			if (faceRecEvent.Label == "unknown person")

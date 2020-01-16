@@ -114,7 +114,7 @@ namespace SkillLibrary
 				_misty.RegisterAudioPlayCompleteEvent(AudioPlayCallback, 0, true,null, null);				
 				_misty.RegisterCapTouchEvent(CapTouchCallback, 0, true, null, null, null);
 				_misty.RegisterKeyPhraseRecognizedEvent(KeyPhraseRecognizedCallback, 250, true, null, null);
-				_misty.StartKeyPhraseRecognition(null);
+				_misty.StartKeyPhraseRecognition(false, false, 0, 0, null);
 				_misty.StartFaceRecognition(null);
 				
 				//Create an event with a specific name so we can unregister it when needed using that name
@@ -387,7 +387,7 @@ namespace SkillLibrary
 			_misty.PlayAudio("s_Awe.wav", 100, null);
 
 			if (!_misty.Wait(3000)) { return; }
-			_misty.StartKeyPhraseRecognition(null);
+			_misty.StartKeyPhraseRecognition(false, false, 0, 0, null);
 		}
 
 		/// <summary>

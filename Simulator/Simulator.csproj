@@ -129,13 +129,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.6</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="MistyRobotics.Common">
-      <Version>0.8.178-beta</Version>
+      <Version>0.9.13-beta</Version>
     </PackageReference>
     <PackageReference Include="MistyRobotics.SDK">
-      <Version>0.8.92-beta</Version>
+      <Version>0.9.13-beta</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

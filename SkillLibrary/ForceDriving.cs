@@ -244,11 +244,11 @@ namespace SkillLibrary
 
 			// Face Recognition
 			_misty.RegisterFaceRecognitionEvent(FaceRecCallback, 0, false, null, null, null);
-			//_misty.StartFaceRecognition(null);
+			_misty.StartFaceRecognition(null);
 
 			// Key Phase
 			_misty.RegisterKeyPhraseRecognizedEvent(KeyPhraseRecognizedCallback, 250, true, null, null);
-			//_misty.StartKeyPhraseRecognition(null);
+			_misty.StartKeyPhraseRecognition(false, false, 0, 0, null);
 
 			//TOF
 			List<TimeOfFlightValidation> tofFrontRightValidations = new List<TimeOfFlightValidation>();
@@ -408,7 +408,7 @@ namespace SkillLibrary
 			_misty.PlayAudio("s_Awe.wav", 100, null);
 
 			if(!_misty.Wait(3000)) { return; }
-			_misty.StartKeyPhraseRecognition(null);
+			_misty.StartKeyPhraseRecognition(false, false, 0, 0, null);
 		}
 
 		/// <summary>
@@ -437,6 +437,11 @@ namespace SkillLibrary
 					{
 						_misty.DisplayImage("e_Love.jpg", 1, null);
 						_misty.PlayAudio("s_Love.wav", 100, null);
+					}
+					else
+					{
+						_misty.DisplayImage("e_Confused.jpg", 1, null);
+						_misty.PlayAudio("s_Confused.wav", 100, null);
 					}
 				}
 			}
