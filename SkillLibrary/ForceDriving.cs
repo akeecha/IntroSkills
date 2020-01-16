@@ -427,8 +427,19 @@ namespace SkillLibrary
 			}
 			else
 			{
-				_misty.DisplayImage("e_EcstacyStarryEyed.jpg", 1, null);
-				_misty.PlayAudio("s_Ecstacy.wav", 100, null);
+				if (faceRecEvent.Label == "Adrian")
+				{
+					_misty.DisplayImage("e_EcstacyStarryEyed.jpg", 1, null);
+					_misty.PlayAudio("s_Ecstacy.wav", 100, null);
+				}
+				else
+				{
+					if (faceRecEvent.Label == "Sharina")
+					{
+						_misty.DisplayImage("e_Love.jpg", 1, null);
+						_misty.PlayAudio("s_Love.wav", 100, null);
+					}
+				}
 			}
 			
 			if(!_misty.Wait(5000)) { return; }
