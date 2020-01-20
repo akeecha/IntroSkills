@@ -294,16 +294,20 @@ namespace SkillLibrary
 			switch(bumpEvent.SensorPosition)
 			{
 				case BumpSensorPosition.FrontRight:
-					_misty.PlayAudio("s_PhraseHello.wav", 100, null);
+					//_misty.PlayAudio("s_PhraseHello.wav", 100, null);
+					_misty.Speak("Front Right", true, "1", null);
 					break;
 				case BumpSensorPosition.FrontLeft:
-					_misty.PlayAudio("s_PhraseUhOh.wav", 100, null);
+					//_misty.PlayAudio("s_PhraseUhOh.wav", 100, null);
+					_misty.Speak("Front Left", true, "1", null);
 					break;
 				case BumpSensorPosition.BackRight:
-					_misty.PlayAudio("s_Love.wav", 100, null);
+					//_misty.PlayAudio("s_Love.wav", 100, null);
+					_misty.Speak("Back Right", true, "1", null);
 					break;
 				case BumpSensorPosition.BackLeft:
-					_misty.PlayAudio("s_Boredom.wav", 100, null);
+					//_misty.PlayAudio("s_Boredom.wav", 100, null);
+					_misty.Speak("Back Left", true, "1", null);
 					break;
 			}
 		}
@@ -373,26 +377,32 @@ namespace SkillLibrary
 					case CapTouchPosition.Back:
 						_misty.PlayAudio("s_Love.wav", 100, null);
 						_misty.DisplayImage("e_Love.jpg", 1 , null);
+						_misty.Speak("Thats nice", true, "1", null);
 						break;
 					case CapTouchPosition.Front:
 						_misty.PlayAudio("s_Amazement.wav", 100, null);
 						_misty.DisplayImage("e_Amazement.jpg", 1, null);
+						_misty.Speak("I am amazed", true, "1", null);
 						break;
 					case CapTouchPosition.Right:
 						_misty.PlayAudio("s_Joy.wav", 100, null);
 						_misty.DisplayImage("e_JoyGoofy3.jpg", 1, null);
+						_misty.Speak("Oh Woopie!", true, "1", null);
 						break;
 					case CapTouchPosition.Left:
 						_misty.PlayAudio("e_Terror.jpg", 100, null);
 						_misty.DisplayImage("s_Fear.wav", 1, null);
+						_misty.Speak("Get away from me!", true, "1", null);
 						break;
 					case CapTouchPosition.Scruff:
 						_misty.PlayAudio("s_Rage.wav", 100, null);
 						_misty.DisplayImage("e_Rage4.jpg", 1, null);
+						_misty.Speak("I will kick your ass!", true, "1", null);
 						break;
 					case CapTouchPosition.Chin:
 						_misty.PlayAudio("s_Sleepy.wav", 100, null);
 						_misty.DisplayImage("e_Sleepy2.jpg", 1, null);
+						_misty.Speak("I am feeling sleepy", true, "1", null);
 						break;
 				}
 			}
@@ -429,19 +439,22 @@ namespace SkillLibrary
 				if (faceRecEvent.Label == "Adrian")
 				{
 					_misty.DisplayImage("e_EcstacyStarryEyed.jpg", 1, null);
-					_misty.PlayAudio("s_Ecstacy.wav", 100, null);
+					//_misty.PlayAudio("s_Ecstacy.wav", 100, null);
+					_misty.Speak("You are awesome Adrian!", true, "1", null);
 				}
 				else
 				{
 					if (faceRecEvent.Label == "Sharina")
 					{
 						_misty.DisplayImage("e_Love.jpg", 1, null);
-						_misty.PlayAudio("s_Love.wav", 100, null);
+						//_misty.PlayAudio("s_Love.wav", 100, null);
+						_misty.Speak("I love you Sharina", true, "1", null);
 					}
 					else
 					{
 						_misty.DisplayImage("e_Confused.jpg", 1, null);
 						_misty.PlayAudio("s_Confused.wav", 100, null);
+						_misty.Speak("Who are you?", true, "1", null);
 					}
 				}
 			}
